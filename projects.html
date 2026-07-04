@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Amal Sebastian</title>
+<meta name="description" content="AI/ML and full-stack projects built and shipped by Amal Sebastian.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="dot-mark"></span>Amal Sebastian</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="academics.html">Academics</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Projects</p>
+    <h1>Things I've built and shipped</h1>
+    <p class="lede" style="max-width:640px;">Search or filter by type below.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="filter-bar reveal">
+      <input type="search" id="project-search" placeholder="Search projects (e.g. 'FastAPI', 'vision', 'RAG')…" aria-label="Search projects">
+      <button class="filter-chip active" data-tag="all">All</button>
+      <button class="filter-chip" data-tag="web">Web</button>
+      <button class="filter-chip" data-tag="api">API</button>
+      <button class="filter-chip" data-tag="ml">ML / AI</button>
+      <button class="filter-chip" data-tag="hackathon">Hackathon</button>
+    </div>
+
+    <div class="grid grid-3" id="project-grid">
+
+      <div class="card project-card reveal" data-tags="web api ml rag">
+        <img class="project-thumb" src="images/projects/job-search.jpg" alt="AI Job Search Assistant screenshot" onerror="this.style.display='none'">
+        <h3>AI Job Search Assistant</h3>
+        <p style="color:var(--ink-soft);font-size:.92rem;">A RAG-based job search platform: Next.js frontend, FastAPI backend, Qdrant + PostgreSQL data layer, and Groq (Llama 3.3-70B) for answer generation. Serves 100+ live postings with sub-1.5s response latency, and cut embedding memory footprint by 87% (400MB → 50MB) by switching to FastEmbed/ONNX to fit a 512MB free-tier host.</p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span><span class="tag">FastAPI</span><span class="tag">Qdrant</span><span class="tag">Groq</span>
+          <span class="tag status-done">Completed</span>
+        </div>
+        <div class="project-links">
+          <a href="https://advanced-job-search.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Live demo</a>
+          <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener" class="btn btn-ghost">Code</a>
+        </div>
+      </div>
+
+      <div class="card project-card reveal" data-tags="web ml vision">
+        <img class="project-thumb" src="images/projects/echosign.jpg" alt="EchoSign screenshot" onerror="this.style.display='none'">
+        <h3>EchoSign — Sign Language Recognition</h3>
+        <p style="color:var(--ink-soft);font-size:.92rem;">Real-time ASL recognition and translation web app. Rebuilt from a local desktop prototype into a production FastAPI + Next.js system with a WebSocket frame-streaming pipeline achieving under 100ms UI latency, plus an automated health-check and reconnection system for resilient uptime on free-tier hosting.</p>
+        <div class="project-tags">
+          <span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">TensorFlow</span><span class="tag">WebSockets</span>
+          <span class="tag status-done">Completed</span>
+        </div>
+        <div class="project-links">
+          <a href="https://sign-language-recognitiontool.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Live demo</a>
+          <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener" class="btn btn-ghost">Code</a>
+        </div>
+      </div>
+
+      <div class="card project-card reveal" data-tags="web ml hackathon">
+        <img class="project-thumb" src="images/projects/lastshot.jpg" alt="LastShot screenshot" onerror="this.style.display='none'">
+        <h3>LastShot</h3>
+        <p style="color:var(--ink-soft);font-size:.92rem;">An AI productivity companion built during the Vibe2Ship Hackathon. React 19 + Vite frontend, with Groq's Llama 3.3-70B as the primary LLM and OpenRouter as an automatic fallback to stay resilient under rate limits.</p>
+        <div class="project-tags">
+          <span class="tag">React 19</span><span class="tag">Vite</span><span class="tag">Groq</span><span class="tag">OpenRouter</span>
+          <span class="tag status-done">Completed</span>
+        </div>
+        <div class="project-links">
+          <a href="https://last-minute-lifesaver1.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Live demo</a>
+          <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener" class="btn btn-ghost">Code</a>
+        </div>
+      </div>
+
+      <div class="card project-card reveal" data-tags="api ml agent">
+        <img class="project-thumb" src="images/projects/agent.jpg" alt="" onerror="this.style.display='none'">
+        <h3>Multi-Tool Research Agent</h3>
+        <p style="color:var(--ink-soft);font-size:.92rem;">A LangGraph agent (<code>create_react_agent</code>) with tool access via the Model Context Protocol, using Groq for inference, Tavily for web search, Qdrant for retrieval, and LangSmith for observability.</p>
+        <div class="project-tags">
+          <span class="tag">LangGraph</span><span class="tag">MCP</span><span class="tag">LangSmith</span>
+          <span class="tag status-progress">In progress</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary disabled" aria-disabled="true">Demo (in progress)</a>
+          <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener" class="btn btn-ghost">Code</a>
+        </div>
+      </div>
+
+      <div class="card project-card reveal" data-tags="api ml">
+        <img class="project-thumb" src="images/projects/sentiment.jpg" alt="" onerror="this.style.display='none'">
+        <h3>AI Writing Tools Sentiment Pipeline</h3>
+        <p style="color:var(--ink-soft);font-size:.92rem;">A parameterized data pipeline analyzing sentiment and engagement across AI writing tools (Jasper, Copy.ai, Writesonic, Rytr) using Reddit (PRAW), YouTube Data API v3, and Product Hunt's GraphQL API — scoped as a solo build.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">PRAW</span><span class="tag">GraphQL</span>
+          <span class="tag status-progress">In progress</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener" class="btn btn-ghost">Code</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="no-results" id="no-results">No projects match that search.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Amal Sebastian</h4>
+        <p style="color:var(--ink-soft);font-size:.9rem;max-width:260px;">AI/ML &amp; full-stack engineer based in Kottayam, Kerala, India.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="blogs.html">Blog</a>
+      </div>
+      <div>
+        <h4>More</h4>
+        <a href="academics.html">Academics</a>
+        <a href="achievements.html">Achievements</a>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/theamalsebastian" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="mailto:theamalsebastian@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Amal Sebastian.</span>
+      <span>Kottayam, Kerala, India</span>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="js/main.js"></script>
+</body>
+</html>
