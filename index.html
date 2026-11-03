@@ -6,9 +6,11 @@
 <title>Amal Sebastian, AI/ML engineer</title>
 <meta name="description" content="Amal Sebastian builds retrieval, computer-vision and agent systems and ships them to production. AI/ML engineer in Kottayam, Kerala.">
 <meta name="theme-color" content="#18191b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2318191b'/%3E%3Crect width='32' height='5' fill='%23ff4a1f'/%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Arial Narrow,Arial,sans-serif' font-weight='700' font-size='22' fill='%23eff0f1'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500&display=swap"></noscript>
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -57,9 +59,9 @@
 <!-- PROJECTS: the held screen, the active list -->
 <section class="projects" id="work" aria-labelledby="projects-title" data-field="graphite">
   <div class="projects__picture" aria-hidden="true">
-    <video class="is-on" src="media/job-search-desk.mp4" poster="media/job-search-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
-    <video src="media/echosign-desk.mp4" poster="media/echosign-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
-    <video src="media/lastshot-desk.mp4" poster="media/lastshot-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
+    <video class="is-on" data-src="media/job-search-desk.mp4" data-poster="media/job-search-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
+    <video data-src="media/echosign-desk.mp4" data-poster="media/echosign-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
+    <video data-src="media/lastshot-desk.mp4" data-poster="media/lastshot-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
     <div class="code-panel" data-ui><pre><code>servers = {
     <span class="s">"tavily"</span>: {
         <span class="s">"command"</span>: <span class="s">"npx"</span>,
@@ -89,21 +91,21 @@ os.environ[<span class="s">"LANGSMITH_TRACING"</span>] = <span class="s">"true"<
     <h2 class="projects__title head" id="projects-title" data-reveal>Built and shipped</h2>
     <ul class="rows">
       <li class="row is-active" id="p-job-search" data-reveal>
-        <video class="row__pic" src="media/job-search-desk.mp4" poster="media/job-search-desk.webp" width="1280" height="800" muted loop playsinline preload="none" aria-label="Screen recording of Job Search AI: roles matched to a resume"></video>
+        <video class="row__pic" data-src="media/job-search-sm.mp4" data-poster="media/job-search-sm.webp" width="720" height="450" muted loop playsinline preload="none" aria-label="Screen recording of Job Search AI: roles matched to a resume"></video>
         <div class="row__top"><h3 class="row__name">AI Job Search Assistant</h3><p class="row__metric">400 → 50&nbsp;MB</p></div>
         <p class="row__text">A RAG job search over 100+ live postings: Next.js on the front, FastAPI behind it, Qdrant and PostgreSQL for data, Groq’s Llama 3.3-70B for answers. Hybrid BM25 and dense retrieval returns in under 1.5&nbsp;s. Switching embeddings to FastEmbed on ONNX cut memory by 87%, enough to fit a 512&nbsp;MB free-tier host.</p>
         <p class="row__stack">Next.js, FastAPI, Qdrant, PostgreSQL, Groq</p>
         <p class="row__links"><a class="link" href="https://advancedjobsearch.vercel.app" target="_blank" rel="noopener">Live demo</a> <a class="link" href="https://github.com/theamalsebastian/AdvancedJob_Search" target="_blank" rel="noopener">Code</a></p>
       </li>
       <li class="row" id="p-echosign" data-reveal>
-        <video class="row__pic" src="media/echosign-desk.mp4" poster="media/echosign-desk.webp" width="1280" height="800" muted loop playsinline preload="none" aria-label="Screen recording of the EchoSign landing screen"></video>
+        <video class="row__pic" data-src="media/echosign-sm.mp4" data-poster="media/echosign-sm.webp" width="720" height="450" muted loop playsinline preload="none" aria-label="Screen recording of the EchoSign landing screen"></video>
         <div class="row__top"><h3 class="row__name">EchoSign</h3><p class="row__metric">Under 100&nbsp;ms</p></div>
         <p class="row__text">Real-time American Sign Language recognition in the browser. I rebuilt a local desktop prototype as a FastAPI and Next.js system that streams camera frames over WebSockets, with a CNN and MediaPipe pipeline behind it and under 100&nbsp;ms of UI latency. Health checks and automatic reconnection keep it up on free-tier hosting.</p>
         <p class="row__stack">OpenCV, MediaPipe, TensorFlow, WebSockets</p>
         <p class="row__links"><a class="link" href="https://sign-language-recognitiontool.vercel.app" target="_blank" rel="noopener">Live demo</a> <a class="link" href="https://github.com/theamalsebastian/Sign_Language_Recognition" target="_blank" rel="noopener">Code</a></p>
       </li>
       <li class="row" id="p-lastshot" data-reveal>
-        <video class="row__pic" src="media/lastshot-desk.mp4" poster="media/lastshot-desk.webp" width="1280" height="800" muted loop playsinline preload="none" aria-label="Screen recording of the LastShot dashboard, tasks ranked by deadline"></video>
+        <video class="row__pic" data-src="media/lastshot-sm.mp4" data-poster="media/lastshot-sm.webp" width="720" height="450" muted loop playsinline preload="none" aria-label="Screen recording of the LastShot dashboard, tasks ranked by deadline"></video>
         <div class="row__top"><h3 class="row__name">LastShot</h3><p class="row__metric">Two LLMs</p></div>
         <p class="row__text">An AI productivity companion built during the Vibe2Ship Hackathon and deployed before the deadline. React 19 and Vite on the front. Groq’s Llama 3.3-70B answers first, and OpenRouter takes over automatically when rate limits hit.</p>
         <p class="row__stack">React 19, Vite, Groq, OpenRouter</p>
@@ -321,9 +323,6 @@ model.print_trainable_parameters()</code></pre></div>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="js/search.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>

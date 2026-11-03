@@ -19,7 +19,8 @@ This portfolio highlights:
 ## 🛠️ Tech Stack
 - **Frontend:** one HTML page, plain CSS and JavaScript (no build step)
 - **Type:** Barlow Condensed + Barlow (Google Fonts)
-- **Motion:** GSAP ScrollTrigger and Lenis smooth scroll (CDN), CSS entrances, `prefers-reduced-motion` respected
+- **Motion:** CSS transitions and one small scroll script; Lenis smooth scroll is fetched only on desktop pointers; `prefers-reduced-motion` respected
+- **Weight:** no libraries on phones; recordings load only when played (720px versions on phones, posters only on Data Saver or slow connections)
 - **Deployment:** Vercel (`vercel.json` redirects the old page URLs to their sections)
 
 ---

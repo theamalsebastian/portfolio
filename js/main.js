@@ -2,25 +2,48 @@
    AMAL SEBASTIAN, portfolio: behaviour and motion.
    The page is complete without this file; it only adds
    smooth scroll, the held frames, the menu and the entrances.
+   No libraries load on phones; desktops fetch Lenis after load.
    ========================================================= */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
-const play = (v) => { if (reduce) return; const p = v.play(); if (p) p.catch(() => {}); };
+// on Data Saver or a slow connection the recordings stay as their posters
+const conn = navigator.connection;
+const lite = !!(conn && (conn.saveData || /2g|3g/.test(conn.effectiveType || "")));
+const play = (v) => {
+  if (reduce || lite || document.hidden) return;
+  if (!v.getAttribute("src") && v.dataset.src) v.src = v.dataset.src; // fetched only when first played
+  const p = v.play(); if (p) p.catch(() => {});
+};
 const pause = (v) => { if (!v.paused) v.pause(); };
 
-/* ---------- smooth scroll (Lenis), tied to GSAP's clock ---------- */
+/* ---------- smooth scroll (Lenis), desktop pointers only ---------- */
 let lenis = null;
 (function smoothScroll() {
-  if (reduce || !fine || !window.Lenis) return;
-  lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1 });
-  if (window.gsap && window.ScrollTrigger) {
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((t) => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-  } else {
-    const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
-    requestAnimationFrame(raf);
-  }
+  if (reduce || !fine) return;
+  addEventListener("load", () => {
+    const s = document.createElement("script");
+    s.src = "https://unpkg.com/lenis@1.1.13/dist/lenis.min.js";
+    s.onload = () => {
+      lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1 });
+      const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+    };
+    document.head.append(s);
+  });
+})();
+
+/* ---------- posters load as their video nears the screen, never while it is hidden by the layout ---------- */
+(function posters() {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.poster = e.target.dataset.poster; io.unobserve(e.target); }
+  }, { rootMargin: "900px 0px" });
+  document.querySelectorAll("video[data-poster]").forEach((v) => io.observe(v));
+  // a hidden tab plays nothing
+  let wasPlaying = [];
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { wasPlaying = [...document.querySelectorAll("video")].filter((v) => !v.paused); wasPlaying.forEach(pause); }
+    else { wasPlaying.forEach(play); wasPlaying = []; }
+  });
 })();
 
 /* ---------- the menu (phones) ---------- */
@@ -60,7 +83,10 @@ if (fill && !reduce) {
   words = [...fill.querySelectorAll(".fill__w")];
 }
 
-/* ---------- one scroll pass: bar ground and tuck, ink fill ---------- */
+/* ---------- one scroll pass: bar ground and tuck, ink fill, footer push, code drift ---------- */
+const footWords = [...document.querySelectorAll(".foot__word")];
+const foot = document.querySelector(".foot");
+const codes = [...document.querySelectorAll(".note__figure pre")];
 const grounds = [hero, ...document.querySelectorAll(".proof__band, main > section[data-field], footer[data-field]")];
 const clamp01 = (x) => Math.min(1, Math.max(0, x));
 let ticking = false, lastY = scrollY;
@@ -81,6 +107,21 @@ function onScroll() {
     const lit = Math.round(q * words.length);
     words.forEach((w, k) => w.classList.toggle("is-lit", k < lit));
   }
+  if (reduce) return;
+
+  // the closing name is pushed up into its line as the footer arrives
+  const ft = foot.getBoundingClientRect().top;
+  if (ft < h * 1.2) {
+    const f = clamp01((h - ft) / (h * 0.65));
+    footWords.forEach((w, k) => { w.style.transform = `translateY(${((1 - clamp01((f - k * 0.08) / 0.92)) * 70).toFixed(1)}%)`; });
+  } else if (!footWords[0].style.transform) footWords.forEach((w) => { w.style.transform = "translateY(70%)"; });
+
+  // research code drifts inside its frame
+  codes.forEach((pre) => {
+    const r = pre.parentElement.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > h) return;
+    pre.style.transform = `translateY(${(40 - 80 * clamp01((h - r.top) / (h + r.height))).toFixed(1)}px)`;
+  });
 }
 const requestScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
 addEventListener("scroll", requestScroll, { passive: true });
@@ -144,18 +185,29 @@ document.querySelectorAll("[data-roll]").forEach((dd) => {
   document.querySelectorAll("video.row__pic").forEach((v) => own.observe(v));
 })();
 
-/* ---------- scroll-linked moves (GSAP ScrollTrigger) ---------- */
-(function scrollMoves() {
-  if (reduce || !window.gsap || !window.ScrollTrigger) return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  // the closing name is pushed up into its line as the footer arrives
-  gsap.fromTo(".foot__word", { yPercent: 70 }, { yPercent: 0, ease: "none", stagger: 0.08, scrollTrigger: { trigger: ".foot", start: "top bottom", end: "top 35%", scrub: true } });
-
-  // research code drifts inside its frame
-  gsap.utils.toArray(".note__figure pre").forEach((pre) => {
-    gsap.fromTo(pre, { y: 40 }, { y: -40, ease: "none", scrollTrigger: { trigger: pre.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+/* ---------- hover: rolling labels, a magnetic pull, the name letter by letter ---------- */
+(function hovers() {
+  if (!fine || reduce) return;
+  const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  document.querySelectorAll(".button, .foot__places a").forEach((el) => {
+    const t = el.textContent.trim();
+    el.innerHTML = `<span class="roll" data-text="${esc(t).replace(/"/g, "&quot;")}"><span class="roll__a">${esc(t)}</span></span>`;
   });
+  document.querySelectorAll(".button").forEach((b) => {
+    b.addEventListener("pointermove", (e) => {
+      const r = b.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.22, y = (e.clientY - r.top - r.height / 2) * 0.32;
+      b.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+    });
+    b.addEventListener("pointerleave", () => { b.style.translate = ""; });
+  });
+  const title = document.querySelector(".hero__title");
+  title.setAttribute("aria-label", title.textContent.replace(/\s+/g, " ").trim());
+  // split into letters only once a pointer reaches the name
+  title.addEventListener("pointerenter", () => title.querySelectorAll("[data-line]").forEach((line) => {
+    line.setAttribute("aria-hidden", "true");
+    line.innerHTML = [...line.textContent].map((ch) => `<span class="ch">${esc(ch)}</span>`).join("");
+  }), { once: true });
 })();
 
 document.getElementById("year").textContent = new Date().getFullYear();
