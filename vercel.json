@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/about", "destination": "/#about", "permanent": true },
+    { "source": "/academics", "destination": "/#credentials", "permanent": true },
+    { "source": "/achievements", "destination": "/#credentials", "permanent": true },
+    { "source": "/projects", "destination": "/#work", "permanent": true },
+    { "source": "/research", "destination": "/#research", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/blogs", "destination": "/", "permanent": false },
+    { "source": "/feedbacks", "destination": "/", "permanent": false }
+  ]
+}

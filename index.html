@@ -2,156 +2,329 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amal Sebastian — AI/ML Engineer</title>
-<meta name="description" content="Portfolio of Amal Sebastian, AI/ML & full-stack engineer building RAG systems, computer vision apps, and agentic tools.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Amal Sebastian, AI/ML engineer</title>
+<meta name="description" content="Amal Sebastian builds retrieval, computer-vision and agent systems and ships them to production. AI/ML engineer in Kottayam, Kerala.">
+<meta name="theme-color" content="#18191b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="logo"><span class="dot-mark"></span>Amal Sebastian</a>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="academics.html">Academics</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="achievements.html">Achievements</a></li>
-      <li><a href="blogs.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+<a class="skip" href="#work">Skip to the work</a>
+
+<header class="bar" id="bar">
+  <a class="bar__mark" href="#top">Amal Sebastian</a>
+  <nav class="bar__links" id="bar-links" aria-label="Sections">
+    <a class="link" href="#work">Work</a>
+    <a class="link" href="#search">Search</a>
+    <a class="link" href="#research">Research</a>
+    <a class="link" href="#about">About</a>
+    <a class="link bar__links-contact" href="#contact">Contact</a>
   </nav>
+  <a class="button button--small bar__cta" href="#contact">Contact</a>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="bar-links"><span class="bar__menu-open">Menu</span><span class="bar__menu-close">Close</span></button>
 </header>
 
-<section class="hero">
-  <canvas id="node-canvas" aria-hidden="true"></canvas>
-  <div class="wrap hero-inner">
-    <p class="eyebrow">AI/ML Engineer · Kottayam, Kerala</p>
-    <h1>Less artificial, more intelligence.</h1>
-    <p class="lede">B.Tech CSE graduate (2026) shipping retrieval-augmented, computer-vision, and agentic applications end-to-end — from model choice to production deployment on real infrastructure constraints.</p>
-    <div class="hero-cta">
-      <a href="projects.html" class="btn btn-primary">View projects</a>
-      <a href="contact.html" class="btn btn-ghost">Get in touch</a>
+<main id="top">
+
+<!-- HERO: the name as the poster -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__stage">
+    <h1 class="hero__title" id="hero-title"><span class="line line--1"><span data-line style="--i:0">Amal</span></span> <span class="line line--2"><span data-line style="--i:1">Sebastian</span></span></h1>
+    <p class="hero__lede" data-load style="--d:380ms">AI/ML engineer in Kottayam, Kerala. I build retrieval, vision and agent systems and ship them to production.</p>
+    <a class="button hero__cta" href="#work" data-load style="--d:540ms">See the work</a>
+  </div>
+</section>
+
+<!-- FIGURES: the real numbers, rolling in -->
+<section class="figures" id="figures" aria-labelledby="figures-title" data-field="light">
+  <div class="figures__head">
+    <h2 class="head" id="figures-title" data-reveal>Measured in production</h2>
+    <p class="figures__lede" data-reveal style="--i:1">Numbers from systems that are live today, on free-tier hosting.</p>
+  </div>
+  <dl class="figures__list">
+    <div class="figure" data-reveal><dt>Less embedding memory in Job Search AI after the move to FastEmbed on ONNX: 400&nbsp;MB down to 50&nbsp;MB.</dt><dd class="figure__num" data-roll>87%</dd></div>
+    <div class="figure" data-reveal><dt>The free-tier memory limit the whole Job Search AI back end now fits inside.</dt><dd class="figure__num" data-roll>512&nbsp;MB</dd></div>
+    <div class="figure" data-reveal><dt>Hybrid BM25 and dense retrieval answer time, across 100+ live job postings.</dt><dd class="figure__num" data-roll>1.5&nbsp;s</dd></div>
+    <div class="figure" data-reveal><dt>UI latency in EchoSign while camera frames stream over WebSockets to the model.</dt><dd class="figure__num" data-roll>&lt;100&nbsp;ms</dd></div>
+  </dl>
+</section>
+
+<!-- PROJECTS: the held screen, the active list -->
+<section class="projects" id="work" aria-labelledby="projects-title" data-field="graphite">
+  <div class="projects__picture" aria-hidden="true">
+    <video class="is-on" src="media/job-search-desk.mp4" poster="media/job-search-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
+    <video src="media/echosign-desk.mp4" poster="media/echosign-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
+    <video src="media/lastshot-desk.mp4" poster="media/lastshot-desk.webp" width="1280" height="800" muted loop playsinline preload="none"></video>
+    <div class="code-panel" data-ui><pre><code>servers = {
+    <span class="s">"tavily"</span>: {
+        <span class="s">"command"</span>: <span class="s">"npx"</span>,
+        <span class="s">"args"</span>: [<span class="s">"-y"</span>, <span class="s">"tavily-mcp"</span>],
+        <span class="s">"transport"</span>: <span class="s">"stdio"</span>,
+    },
+    <span class="s">"qdrant"</span>: {
+        <span class="s">"url"</span>: QDRANT_MCP_URL,
+        <span class="s">"transport"</span>: <span class="s">"streamable_http"</span>,
+    },
+}
+os.environ[<span class="s">"LANGSMITH_TRACING"</span>] = <span class="s">"true"</span></code></pre></div>
+    <div class="code-panel" data-ui><pre><code><span class="c">def</span> collect(tool, sources):
+    rows = []
+    rows += reddit_posts(sources[<span class="s">"reddit"</span>], tool)
+    rows += youtube_comments(sources[<span class="s">"youtube"</span>], tool)
+    rows += ph_reviews(sources[<span class="s">"product_hunt"</span>], tool)
+    <span class="c">return</span> pd.DataFrame(rows)
+
+<span class="c">def</span> engagement(df):
+    <span class="c">return</span> df.groupby(<span class="s">"source"</span>)[
+        [<span class="s">"score"</span>, <span class="s">"comments"</span>]
+    ].median()</code></pre></div>
+  </div>
+
+  <div class="projects__list">
+    <h2 class="projects__title head" id="projects-title" data-reveal>Built and shipped</h2>
+    <ul class="rows">
+      <li class="row is-active" id="p-job-search" data-reveal>
+        <video class="row__pic" src="media/job-search-desk.mp4" poster="media/job-search-desk.webp" width="1280" height="800" muted loop playsinline preload="none" aria-label="Screen recording of Job Search AI: roles matched to a resume"></video>
+        <div class="row__top"><h3 class="row__name">AI Job Search Assistant</h3><p class="row__metric">400 → 50&nbsp;MB</p></div>
+        <p class="row__text">A RAG job search over 100+ live postings: Next.js on the front, FastAPI behind it, Qdrant and PostgreSQL for data, Groq’s Llama 3.3-70B for answers. Hybrid BM25 and dense retrieval returns in under 1.5&nbsp;s. Switching embeddings to FastEmbed on ONNX cut memory by 87%, enough to fit a 512&nbsp;MB free-tier host.</p>
+        <p class="row__stack">Next.js, FastAPI, Qdrant, PostgreSQL, Groq</p>
+        <p class="row__links"><a class="link" href="https://advancedjobsearch.vercel.app" target="_blank" rel="noopener">Live demo</a> <a class="link" href="https://github.com/theamalsebastian/AdvancedJob_Search" target="_blank" rel="noopener">Code</a></p>
+      </li>
+      <li class="row" id="p-echosign" data-reveal>
+        <video class="row__pic" src="media/echosign-desk.mp4" poster="media/echosign-desk.webp" width="1280" height="800" muted loop playsinline preload="none" aria-label="Screen recording of the EchoSign landing screen"></video>
+        <div class="row__top"><h3 class="row__name">EchoSign</h3><p class="row__metric">Under 100&nbsp;ms</p></div>
+        <p class="row__text">Real-time American Sign Language recognition in the browser. I rebuilt a local desktop prototype as a FastAPI and Next.js system that streams camera frames over WebSockets, with a CNN and MediaPipe pipeline behind it and under 100&nbsp;ms of UI latency. Health checks and automatic reconnection keep it up on free-tier hosting.</p>
+        <p class="row__stack">OpenCV, MediaPipe, TensorFlow, WebSockets</p>
+        <p class="row__links"><a class="link" href="https://sign-language-recognitiontool.vercel.app" target="_blank" rel="noopener">Live demo</a> <a class="link" href="https://github.com/theamalsebastian/Sign_Language_Recognition" target="_blank" rel="noopener">Code</a></p>
+      </li>
+      <li class="row" id="p-lastshot" data-reveal>
+        <video class="row__pic" src="media/lastshot-desk.mp4" poster="media/lastshot-desk.webp" width="1280" height="800" muted loop playsinline preload="none" aria-label="Screen recording of the LastShot dashboard, tasks ranked by deadline"></video>
+        <div class="row__top"><h3 class="row__name">LastShot</h3><p class="row__metric">Two LLMs</p></div>
+        <p class="row__text">An AI productivity companion built during the Vibe2Ship Hackathon and deployed before the deadline. React 19 and Vite on the front. Groq’s Llama 3.3-70B answers first, and OpenRouter takes over automatically when rate limits hit.</p>
+        <p class="row__stack">React 19, Vite, Groq, OpenRouter</p>
+        <p class="row__links"><a class="link" href="https://last-minute-lifesaver1.vercel.app" target="_blank" rel="noopener">Live demo</a> <a class="link" href="https://github.com/theamalsebastian/LastShot" target="_blank" rel="noopener">Code</a></p>
+      </li>
+      <li class="row" id="p-agent" data-reveal>
+        <div class="row__top"><h3 class="row__name">Multi-tool research agent</h3><p class="row__metric">In progress</p></div>
+        <p class="row__text">A LangGraph agent built on <code>create_react_agent</code>, reaching its tools through the Model Context Protocol. Groq runs inference, Tavily searches the web, Qdrant handles retrieval and LangSmith traces every run.</p>
+        <p class="row__stack">LangGraph, MCP, Tavily, Qdrant, LangSmith</p>
+        <p class="row__links"><a class="link" href="https://github.com/theamalsebastian" target="_blank" rel="noopener">GitHub profile</a></p>
+      </li>
+      <li class="row" id="p-sentiment" data-reveal>
+        <div class="row__top"><h3 class="row__name">AI writing tools sentiment</h3><p class="row__metric">In progress</p></div>
+        <p class="row__text">A parameterised pipeline that measures sentiment and engagement around Jasper, Copy.ai, Writesonic and Rytr. It pulls from Reddit through PRAW, the YouTube Data API v3 and Product Hunt’s GraphQL API. A solo build.</p>
+        <p class="row__stack">Python, PRAW, YouTube Data API, GraphQL</p>
+        <p class="row__links"><a class="link" href="https://github.com/theamalsebastian" target="_blank" rel="noopener">GitHub profile</a></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SEARCH: the live thing, hybrid ranking over this page -->
+<section class="search" id="search" aria-labelledby="search-title" data-field="coal">
+  <div class="search__intro">
+    <h2 class="head" id="search-title" data-reveal>Search my work</h2>
+    <p class="search__lede" data-reveal style="--i:1">The ranking behind Job Search AI, run on this page. Each query is scored twice, by keywords (BM25) and by concept, and the two lists are merged with Reciprocal Rank Fusion.</p>
+    <form class="search__form" role="search" data-reveal style="--i:2" onsubmit="return false">
+      <label class="search__label" for="q">Ask about a skill, a problem or a tool</label>
+      <input class="search__input" id="q" type="search" name="q" value="less memory on a free tier" autocomplete="off" spellcheck="false">
+    </form>
+    <div class="search__try" data-reveal style="--i:3">
+      <p class="search__try-label" id="try-label">Try</p>
+      <div class="search__chips" role="group" aria-labelledby="try-label">
+        <button type="button" class="chip" data-q="real-time video">Real-time video</button>
+        <button type="button" class="chip" data-q="LLM fallback when rate limited">LLM fallback</button>
+        <button type="button" class="chip" data-q="agents with tools">Agents with tools</button>
+        <button type="button" class="chip" data-q="Azure certification">Azure</button>
+        <button type="button" class="chip" data-q="fine-tuning">Fine-tuning</button>
+      </div>
     </div>
-    <div class="hero-tags">
-      <span class="chip">Python · FastAPI</span>
-      <span class="chip">RAG · Vector Search</span>
-      <span class="chip">LangGraph Agents</span>
-      <span class="chip">Computer Vision</span>
-      <span class="chip">Azure AI-900 / AI-102</span>
+  </div>
+
+  <div class="search__results" data-ui aria-live="polite">
+    <div class="rank rank--fused">
+      <h3 class="rank__title">Fused</h3>
+      <ol class="rank__list" id="rank-fused"><li><span class="rank__doc">AI Job Search Assistant</span><span class="rank__score">0.033</span></li><li><span class="rank__doc">Retrieval evaluation harness</span><span class="rank__score">0.032</span></li><li><span class="rank__doc">LoRA fine-tuning experiments</span><span class="rank__score">0.031</span></li></ol>
+      <p class="rank__snippet" id="rank-snippet">Switching embeddings to FastEmbed on ONNX cut memory by 87%, enough to fit a 512 MB free-tier host.</p>
+    </div>
+    <div class="rank">
+      <h3 class="rank__title">Keywords</h3>
+      <ol class="rank__list" id="rank-bm25"><li><span class="rank__doc">AI Job Search Assistant</span><span class="rank__score">2.41</span></li></ol>
+    </div>
+    <div class="rank">
+      <h3 class="rank__title">Concepts</h3>
+      <ol class="rank__list" id="rank-dense"><li><span class="rank__doc">Retrieval evaluation harness</span><span class="rank__score">0.71</span></li></ol>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">What I actually ship</p>
-      <h2>Three production systems, three different constraints.</h2>
-      <p>Each project was built and deployed on real infrastructure — not just notebooks — and each taught me a different lesson about the gap between a model working and a system working.</p>
-    </div>
+<!-- RESEARCH: three investigations, alternating -->
+<section class="research" id="research" aria-labelledby="research-title" data-field="light">
+  <div class="research__head">
+    <h2 class="research__title" id="research-title"><span class="line"><span data-rise-line>Research</span></span></h2>
+    <p class="research__lede" data-reveal>Not published papers. Deliberate, written-up investigations into how AI systems behave under real constraints.</p>
+  </div>
 
-    <div class="grid grid-3">
-      <div class="card reveal">
-        <p class="card-num">01 / RAG</p>
-        <h3>AI Job Search Assistant</h3>
-        <p>Hybrid BM25 + dense retrieval over live job postings, served through Groq's Llama 3.3-70B, with a retrieval evaluation harness that surfaced a real memory/accuracy tradeoff on free-tier infrastructure.</p>
-        <a href="projects.html" class="btn btn-ghost" style="margin-top:12px;">Read more →</a>
-      </div>
-      <div class="card reveal">
-        <p class="card-num">02 / Vision</p>
-        <h3>EchoSign — ASL Recognition</h3>
-        <p>Real-time sign language recognition over WebSockets, under 100ms UI latency, with a CNN + MediaPipe pipeline running on a free-tier Render backend.</p>
-        <a href="projects.html" class="btn btn-ghost" style="margin-top:12px;">Read more →</a>
-      </div>
-      <div class="card reveal">
-        <p class="card-num">03 / Hackathon</p>
-        <h3>LastShot</h3>
-        <p>An AI productivity companion built in a hackathon sprint, with a Groq-primary / OpenRouter-fallback LLM setup for resilience under rate limits.</p>
-        <a href="projects.html" class="btn btn-ghost" style="margin-top:12px;">Read more →</a>
-      </div>
+  <article class="note" data-reveal>
+    <div class="code-panel note__figure" data-ui><pre><code><span class="k"># eval_retrieval.py</span>
+STRATEGIES = {
+    <span class="s">"semantic"</span>:      dense_search,
+    <span class="s">"hybrid_rrf"</span>:    hybrid(bm25, dense, fuse=rrf),
+    <span class="s">"hybrid_rerank"</span>: hybrid(bm25, dense, fuse=rrf,
+                           rerank=cross_encoder),
+}
+BUDGET_MB = 512  <span class="k"># Render free tier</span>
+
+<span class="c">for</span> name, search <span class="c">in</span> STRATEGIES.items():
+    report(name, recall_at_k(search, QUERIES),
+           peak_memory_mb(search))</code></pre></div>
+    <div class="note__text">
+      <h3 class="note__title">Retrieval evaluation harness</h3>
+      <p class="note__kind">Information retrieval</p>
+      <p>I wrote <code>eval_retrieval.py</code> to compare three strategies on one shared query set: semantic search alone, hybrid BM25 and dense retrieval fused with Reciprocal Rank Fusion, and the same hybrid with a cross-encoder reranker.</p>
+      <p>The reranker won on accuracy, but its memory cost broke the 512&nbsp;MB hosting budget. A modelling question became a documented production trade-off.</p>
+      <p class="note__status">Write-up coming soon</p>
     </div>
+  </article>
+
+  <article class="note note--flip" data-reveal>
+    <div class="code-panel note__figure" data-ui><pre><code><span class="c">from</span> langchain_mcp_adapters.client <span class="c">import</span> MultiServerMCPClient
+<span class="c">from</span> langgraph.prebuilt <span class="c">import</span> create_react_agent
+
+<span class="c">async with</span> MultiServerMCPClient(servers) <span class="c">as</span> client:
+    agent = create_react_agent(
+        ChatGroq(model=<span class="s">"llama-3.3-70b-versatile"</span>),
+        client.get_tools(),
+    )
+    result = <span class="c">await</span> agent.ainvoke(
+        {<span class="s">"messages"</span>: [(<span class="s">"user"</span>, question)]}
+    )</code></pre></div>
+    <div class="note__text">
+      <h3 class="note__title">Multi-tool research agent</h3>
+      <p class="note__kind">Agentic systems</p>
+      <p>A research agent on LangGraph’s <code>create_react_agent</code>, with its tools served over the Model Context Protocol through <code>langchain-mcp-adapters</code>.</p>
+      <p>Groq handles inference, Tavily the web search and Qdrant the retrieval. LangSmith records every run, so a bad answer can be traced back to the tool call that caused it.</p>
+      <p class="note__status">In progress</p>
+    </div>
+  </article>
+
+  <article class="note" data-reveal>
+    <div class="code-panel note__figure" data-ui><pre><code><span class="c">from</span> peft <span class="c">import</span> LoraConfig, get_peft_model
+
+config = LoraConfig(
+    r=<span class="s">8</span>,
+    lora_alpha=<span class="s">16</span>,
+    lora_dropout=<span class="s">0.05</span>,
+    target_modules=[<span class="s">"q_proj"</span>, <span class="s">"v_proj"</span>],
+)
+model = get_peft_model(base_model, config)
+model.print_trainable_parameters()</code></pre></div>
+    <div class="note__text">
+      <h3 class="note__title">LoRA fine-tuning experiments</h3>
+      <p class="note__kind">Model adaptation</p>
+      <p>Part of a structured three-week applied AI engineering plan: parameter-efficient fine-tuning with Hugging Face PEFT.</p>
+      <p>The same plan adds Redis caching, Docker containers, GitHub Actions CI/CD, and quantisation of the EchoSign sign-language model so it runs lighter in production.</p>
+      <p class="note__status">In progress</p>
+    </div>
+  </article>
+</section>
+
+<!-- ABOUT: a statement that fills with ink as it is read -->
+<section class="about" id="about" aria-labelledby="about-title" data-field="graphite">
+  <div class="about__head">
+    <h2 class="about__title" id="about-title">About</h2>
+    <p class="about__lead" data-fill>Less artificial, more intelligence: models that leave the notebook and work for people.</p>
+  </div>
+  <div class="about__text">
+    <p data-reveal="move" style="--i:1">I care about the gap between a model that works in a notebook and a system that works for people.</p>
+    <p data-reveal="move" style="--i:2">I finished a B.Tech in Computer Science and Engineering at Lourdes Matha College of Science and Technology, Thiruvananthapuram, in 2026. Since then I’ve been building and shipping full systems with real users, real cost limits and real deployment failures to debug.</p>
+    <p data-reveal="move" style="--i:3">My work sits where applied AI meets full-stack engineering: retrieval-augmented generation, computer vision and agents, wrapped in APIs and interfaces people can use. I’m looking for my first full-time role, building end to end from model choice to production.</p>
+  </div>
+  <dl class="skills" data-reveal="move">
+    <div class="skills__group"><dt>Languages</dt><dd>Python, SQL, C, JavaScript, HTML and CSS</dd></div>
+    <div class="skills__group"><dt>Frameworks</dt><dd>FastAPI, Flask, Next.js, React, Node.js, Docker, LangGraph</dd></div>
+    <div class="skills__group"><dt>AI and ML</dt><dd>Qdrant and vector search, Hugging Face Transformers, TensorFlow and Keras, OpenCV, scikit-learn, LoRA with PEFT, Groq and Llama 3.3</dd></div>
+    <div class="skills__group"><dt>Cloud and data</dt><dd>Microsoft Azure, Vercel, Render, PostgreSQL, MongoDB, GitHub Actions</dd></div>
+    <div class="skills__group"><dt>Ways of working</dt><dd>Technical writing, self-directed learning, debugging under constraints, clear communication, time management</dd></div>
+  </dl>
+</section>
+
+<!-- CREDENTIALS: names running off the edges -->
+<section class="creds" id="credentials" aria-labelledby="proof-title" data-field="light">
+  <div class="proof__band" aria-hidden="true" data-field="coal">
+    <div class="proof__track">
+      <span>Azure AI-900</span><i></i><span>Azure AI-102</span><i></i><span>Infosys Foundation</span><i></i><span>Vibe2Ship Hackathon</span><i></i><span>B.Tech CSE 2026</span><i></i>
+      <span>Azure AI-900</span><i></i><span>Azure AI-102</span><i></i><span>Infosys Foundation</span><i></i><span>Vibe2Ship Hackathon</span><i></i><span>B.Tech CSE 2026</span><i></i>
+    </div>
+  </div>
+  <div class="creds__head">
+    <h2 class="head" id="proof-title" data-reveal="move">Credentials</h2>
+    <p class="creds__lede" data-reveal="move" style="--i:1">Two Microsoft Azure certifications, a hackathon build that shipped, and a computer science degree.</p>
+  </div>
+  <ul class="creds__list">
+    <li data-reveal="move"><h3>Microsoft Certified: Azure AI Engineer Associate (AI-102)</h3><p>Designing and building AI solutions on Azure. Passed August 2025.</p></li>
+    <li data-reveal="move"><h3>Microsoft Certified: Azure AI Fundamentals (AI-900)</h3><p>Core AI and machine learning concepts and Azure AI services. Passed August 2025.</p></li>
+    <li data-reveal="move"><h3>Infosys Foundation, Finishing School for Employability</h3><p>Trainee in Kochi, July to August 2025. Over 100 hours of AI-900 and AI-102 training, with labs in computer vision, NLP and Azure cognitive services.</p></li>
+    <li data-reveal="move"><h3>Vibe2Ship Hackathon</h3><p>Built and deployed LastShot inside the hackathon window, with an automatic LLM fallback.</p></li>
+    <li data-reveal="move"><h3>B.Tech, Computer Science and Engineering</h3><p>Lourdes Matha College of Science and Technology, 2022–2026, CGPA 7.1. Data structures and algorithms, operating systems, databases, networks, software engineering.</p></li>
+  </ul>
+</section>
+
+<!-- CONTACT: the invitation and the card -->
+<section class="contact" id="contact" aria-labelledby="contact-title" data-field="graphite">
+  <div class="contact__intro">
+    <h2 class="contact__title" id="contact-title" data-reveal="move">Let’s talk</h2>
+    <p class="contact__place" data-reveal="move" style="--i:1">Open to full-time AI/ML, software and full-stack roles. Based in Kottayam, Kerala, and happy to work remotely.</p>
+  </div>
+  <div class="contact__card" data-reveal="move" style="--i:2">
+    <dl class="contact__rows">
+      <div><dt>Email</dt><dd><a class="link" href="mailto:theamalsebastian@gmail.com">theamalsebastian@gmail.com</a></dd></div>
+      <div><dt>Phone</dt><dd><a class="link" href="tel:+917907524497">+91 79075 24497</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a class="link" href="https://www.linkedin.com/in/theamalsebastian" target="_blank" rel="noopener">theamalsebastian</a></dd></div>
+      <div><dt>GitHub</dt><dd><a class="link" href="https://github.com/theamalsebastian" target="_blank" rel="noopener">theamalsebastian</a></dd></div>
+    </dl>
+    <a class="button button--wide" href="mailto:theamalsebastian@gmail.com?subject=Hello%20Amal&amp;body=Hi%20Amal%2C%0A%0AI%20saw%20your%20portfolio%20and%20wanted%20to%20talk%20about%20">Email Amal</a>
   </div>
 </section>
 
-<hr class="divider">
+</main>
 
-<section class="section-tight">
-  <div class="wrap">
-    <div class="grid grid-4">
-      <div class="reveal">
-        <p class="card-num">CERTIFIED</p>
-        <h3 style="font-size:1.1rem;">Azure AI-900 &amp; AI-102</h3>
-        <p style="color:var(--ink-soft);font-size:.9rem;">Microsoft Certified, via Infosys Foundation Finishing School.</p>
-      </div>
-      <div class="reveal">
-        <p class="card-num">DEPLOYED</p>
-        <h3 style="font-size:1.1rem;">3 live systems</h3>
-        <p style="color:var(--ink-soft);font-size:.9rem;">Vercel + Render, real users, real free-tier constraints.</p>
-      </div>
-      <div class="reveal">
-        <p class="card-num">EDUCATION</p>
-        <h3 style="font-size:1.1rem;">B.Tech CSE, 2026</h3>
-        <p style="color:var(--ink-soft);font-size:.9rem;">Lourdes Matha College of Science and Technology.</p>
-      </div>
-      <div class="reveal">
-        <p class="card-num">OPEN TO</p>
-        <h3 style="font-size:1.1rem;">AI/ML &amp; full-stack roles</h3>
-        <p style="color:var(--ink-soft);font-size:.9rem;">Available now — see the contact page.</p>
-      </div>
+<footer class="foot" data-field="coal">
+  <div class="foot__inner">
+    <p class="foot__name" aria-hidden="true"><span class="foot__word">Amal</span> <span class="foot__word">Sebastian</span></p>
+    <div class="foot__row">
+      <ul class="foot__places">
+        <li><a href="mailto:theamalsebastian@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/theamalsebastian" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/theamalsebastian" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="tel:+917907524497">+91 79075 24497</a></li>
+      </ul>
+      <nav class="foot__links" aria-label="Footer">
+        <a class="link" href="#figures">Figures</a>
+        <a class="link" href="#work">Work</a>
+        <a class="link" href="#search">Search</a>
+        <a class="link" href="#research">Research</a>
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#credentials">Credentials</a>
+      </nav>
+      <p class="credits">Project footage is recorded from the live demos.</p>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap" style="text-align:center;">
-    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);max-width:700px;margin:0 auto 20px;">Currently looking for my first full-time role in AI/ML or software engineering.</h2>
-    <div class="hero-cta" style="justify-content:center;">
-      <a href="contact.html" class="btn btn-primary">Start a conversation</a>
-      <a href="https://github.com/theamalsebastian" class="btn btn-ghost" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h4>Amal Sebastian</h4>
-        <p style="color:var(--ink-soft);font-size:.9rem;max-width:260px;">AI/ML &amp; full-stack engineer based in Kottayam, Kerala, India.</p>
-      </div>
-      <div>
-        <h4>Site</h4>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="research.html">Research</a>
-        <a href="blogs.html">Blog</a>
-      </div>
-      <div>
-        <h4>More</h4>
-        <a href="academics.html">Academics</a>
-        <a href="achievements.html">Achievements</a>
-      </div>
-      <div>
-        <h4>Elsewhere</h4>
-        <a href="https://github.com/theamalsebastian" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/theamalsebastian" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="mailto:theamalsebastian@gmail.com">Email</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Amal Sebastian.</span>
-      <span>Kottayam, Kerala, India</span>
+    <div class="foot__legal">
+      <p>© <span id="year">2026</span> Amal Sebastian</p>
+      <a class="link" href="#top">Back to top</a>
     </div>
   </div>
 </footer>
 
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="js/search.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
